@@ -5,6 +5,7 @@ import (
 	"github.com/a-shine/butter"
 	"github.com/a-shine/butter/node"
 	"github.com/a-shine/cs347-cw/pcg"
+	"html/template"
 	"net/http"
 	"os"
 	"strings"
@@ -43,11 +44,23 @@ func findEntry(w http.ResponseWriter, r *http.Request) {
 }
 
 func hello(w http.ResponseWriter, req *http.Request) {
-	dat, err := os.ReadFile("pages/welcome.html")
+	//dat, err := os.ReadFile("pages/welcome.tmpl")
+	//if err != nil {
+	//	fmt.Println(err)
+	//}
+	// Initialize a slice containing the paths to the two files. Note that the
+	// home.page.tmpl file must be the *first* file in the slice.
+	files := []string{
+		"pages/test.tmpl",
+		"pages/base.tmpl",
+	}
+	temp, err := template.ParseFiles(files...)
 	if err != nil {
 		fmt.Println(err)
 	}
-	fmt.Fprintf(w, string(dat))
+	fmt.Println(temp)
+	temp.Execute(w, nil)
+	//fmt.Fprintf(w, string(dat))
 }
 
 func main() {
