@@ -4,32 +4,25 @@ import (
 	"fmt"
 	"github.com/a-shine/butter"
 	"github.com/a-shine/butter/node"
-	"github.com/a-shine/butter/retrieve"
-	"github.com/a-shine/butter/store"
+	"github.com/a-shine/cs347-cw/pcg"
 	"net/http"
 	"os"
+	"strings"
 )
 
 type WikiUser struct {
-	node *node.Node
+	overlayInterface *pcg.Peer
 }
 
 func (user *WikiUser) store(w http.ResponseWriter, r *http.Request) {
 	data := r.FormValue("article")
-
-	var keywords []string
-	for _, keyword := range r.Form["keyword"] {
-		keywords = append(keywords, keyword)
-	}
-
-	uuid := store.NaiveStore(user.node, keywords, data)
-	fmt.Fprintf(w, string(uuid))
+	uuid := pcg.PCGStore(user.overlayInterface, data)
+	fmt.Fprintf(w, uuid)
 }
 
 func (user *WikiUser) retrieve(w http.ResponseWriter, r *http.Request) {
 	uuid := r.FormValue("uuid")
-
-	data := retrieve.NaiveRetrieve(user.node, uuid)
+	data := pcg.NaiveRetrieve(user.overlayInterface, strings.TrimSpace(uuid))
 	fmt.Fprintf(w, string(data))
 }
 
@@ -57,17 +50,17 @@ func hello(w http.ResponseWriter, req *http.Request) {
 	fmt.Fprintf(w, string(dat))
 }
 
-func dummyClientBehaviour(node *node.Node) {
-	// do nothing
-}
-
 func main() {
-	butterNode, _ := node.NewNode(0, 512, dummyClientBehaviour, false)
+	butterNode, _ := node.NewNode(0, 512)
 	fmt.Println("Node created with address:", butterNode.Address())
 
-	go butter.Spawn(&butterNode, false)
+	overlay := pcg.NewPCG(butterNode, 512) // Creates a new overlay network
+	pcg.AppendRetrieveBehaviour(overlay.Node())
+	pcg.AppendGroupStoreBehaviour(overlay.Node())
 
-	user := WikiUser{&butterNode}
+	go butter.Spawn(&overlay, false)
+
+	user := WikiUser{&overlay}
 
 	http.HandleFunc("/", hello)
 	http.HandleFunc("/add", addEntry)
@@ -75,5 +68,5 @@ func main() {
 	http.HandleFunc("/store", user.store)
 	http.HandleFunc("/retrieve", user.retrieve)
 
-	http.ListenAndServe(":8001", nil)
+	http.ListenAndServe(":8000", nil)
 }
