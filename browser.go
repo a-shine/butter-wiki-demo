@@ -7,7 +7,6 @@ import (
 	"github.com/a-shine/cs347-cw/pcg"
 	"html/template"
 	"net/http"
-	"os"
 	"strings"
 )
 
@@ -28,39 +27,41 @@ func (user *WikiUser) retrieve(w http.ResponseWriter, r *http.Request) {
 }
 
 func addEntry(w http.ResponseWriter, r *http.Request) {
-	dat, err := os.ReadFile("pages/add.html")
-	if err != nil {
-		fmt.Println(err)
-	}
-	fmt.Fprintf(w, string(dat))
-}
-
-func findEntry(w http.ResponseWriter, r *http.Request) {
-	dat, err := os.ReadFile("pages/find.html")
-	if err != nil {
-		fmt.Println(err)
-	}
-	fmt.Fprintf(w, string(dat))
-}
-
-func hello(w http.ResponseWriter, req *http.Request) {
-	//dat, err := os.ReadFile("pages/welcome.tmpl")
-	//if err != nil {
-	//	fmt.Println(err)
-	//}
-	// Initialize a slice containing the paths to the two files. Note that the
-	// home.page.tmpl file must be the *first* file in the slice.
 	files := []string{
-		"pages/test.tmpl",
-		"pages/base.tmpl",
+		"pages/add.html",
+		"pages/base.html",
 	}
 	temp, err := template.ParseFiles(files...)
 	if err != nil {
 		fmt.Println(err)
 	}
-	fmt.Println(temp)
 	temp.Execute(w, nil)
-	//fmt.Fprintf(w, string(dat))
+}
+
+func findEntry(w http.ResponseWriter, r *http.Request) {
+	files := []string{
+		"pages/find.html",
+		"pages/base.html",
+	}
+	temp, err := template.ParseFiles(files...)
+	if err != nil {
+		fmt.Println(err)
+	}
+	temp.Execute(w, nil)
+}
+
+func hello(w http.ResponseWriter, req *http.Request) {
+	// Initialize a slice containing the paths to the two files. Note that the
+	// home.page.tmpl file must be the *first* file in the slice.
+	files := []string{
+		"pages/welcome.html",
+		"pages/base.html",
+	}
+	temp, err := template.ParseFiles(files...)
+	if err != nil {
+		fmt.Println(err)
+	}
+	temp.Execute(w, nil)
 }
 
 func main() {

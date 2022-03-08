@@ -1,6 +1,10 @@
-<h1>Find a wiki entry</h1>
+{{template "base" .}}
+
+{{define "main"}}
+<h2>Find a wiki entry</h2>
 <form action="/retrieve" method="POST">
-   <label for="uuid">UUID:</label>
+    <label for="uuid">UUID:</label>
     <input type="text" id="uuid" name="uuid" required><br><br>
     <input type="submit">
 </form>
+{{end}}
