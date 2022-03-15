@@ -42,11 +42,10 @@ func printAll(peer *pcg.Peer) {
 
 func interact(overlayInterface node.Overlay) {
 	peer := overlayInterface.(*pcg.Peer)
-	fmt.Println("Sock addr: ", peer.Node().SocketAddr())
 	for {
 		// prompt to pcgStore or pcgRetrieve information
 		var interactionType string
-		fmt.Print("add(1) or pcgRetrieve(2) or All My IDs(3) information?")
+		fmt.Print("add(1), retrieve(2) or see all my groups(3) information?")
 		fmt.Scanln(&interactionType)
 		switch interactionType {
 		case "1":
@@ -62,20 +61,19 @@ func interact(overlayInterface node.Overlay) {
 }
 
 func main() {
-	// Create a new node by: specifying a port (or setting it to 0 to let the OS assign one), defining an upper limit on
-	// memory usage (recommended setting it to 2048mb) and specifying a clientBehaviour function that describes the
-	// user-interface to interact with the decentralised application
+	// Create a new node by specifying a port (or setting it to 0 to let the OS assign one) and defining an upper limit
+	// on memory usage
 	butterNode, _ := node.NewNode(0, 512)
-	butterNode.RegisterClientBehaviour(interact)
 
-	fmt.Println("Node is listening at", butterNode.Address())
-
-	// No need to specify retrieval or storage server behaviours as they are handled by the provided butter storage and
-	//retrieve packages
-
+	// PCG overlay network
 	overlay := pcg.NewPCG(butterNode, 512) // Creates a new overlay network
 	pcg.AppendRetrieveBehaviour(overlay.Node())
 	pcg.AppendGroupStoreBehaviour(overlay.Node())
+
+	// App-level client behaviour (i.e. how are the users expected to interface with the dapp?)
+	butterNode.RegisterClientBehaviour(interact)
+
+	fmt.Println("Node is listening at", butterNode.Address())
 
 	// Spawn your node into the butter network
 	butter.Spawn(&overlay, false) // Blocking
