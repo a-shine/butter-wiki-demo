@@ -3,8 +3,8 @@ module butter-wiki-demo
 go 1.17
 
 require (
-	github.com/a-shine/butter v0.0.0-20220305170926-b09de445536f // indirect
-	github.com/a-shine/cs347-cw v0.0.0-20220224084634-1e69128387c2 // indirect
+	github.com/a-shine/butter v0.0.0-20220316100132-8f69546fb2d7 // indirect
+	github.com/a-shine/cs347-cw v0.0.0-20220317110538-84837f8f2ada // indirect
 	github.com/jordwest/mock-conn v0.0.0-20180617021051-4896c6bd1641 // indirect
 	github.com/nu7hatch/gouuid v0.0.0-20131221200532-179d4d0c4d8d // indirect
 	github.com/pbnjay/memory v0.0.0-20210728143218-7b4eea64cf58 // indirect

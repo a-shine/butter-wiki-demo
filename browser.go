@@ -16,14 +16,18 @@ type WikiUser struct {
 
 func (user *WikiUser) store(w http.ResponseWriter, r *http.Request) {
 	data := r.FormValue("article")
-	uuid := pcg.PCGStore(user.overlayInterface, data)
+	uuid := pcg.Store(user.overlayInterface, data)
 	fmt.Fprintf(w, uuid)
 }
 
 func (user *WikiUser) retrieve(w http.ResponseWriter, r *http.Request) {
 	uuid := r.FormValue("uuid")
-	data := pcg.NaiveRetrieve(user.overlayInterface, strings.TrimSpace(uuid))
-	fmt.Fprintf(w, string(data))
+	data, err := pcg.NaiveRetrieve(user.overlayInterface, strings.TrimSpace(uuid))
+	if err != nil {
+		fmt.Fprintf(w, "Unable to find the information on the network")
+	} else {
+		fmt.Fprintf(w, string(data))
+	}
 }
 
 func addEntry(w http.ResponseWriter, r *http.Request) {

@@ -2,8 +2,12 @@ github.com/a-shine/butter v0.0.0-20220202123854-1f9e74543932 h1:X61arwxB51N97QYR
 github.com/a-shine/butter v0.0.0-20220202123854-1f9e74543932/go.mod h1:LTo5iZD8s8jCC3gLKKChLLPSyzQy2pDMqjNci2IIerk=
 github.com/a-shine/butter v0.0.0-20220305170926-b09de445536f h1:nku6RoNgFWFYZhh4sx6SDzkh3qs//JLzKRo7TI2WxSo=
 github.com/a-shine/butter v0.0.0-20220305170926-b09de445536f/go.mod h1:xP/flI+MRbofiv6JoUlhZqGRvNiPLi5Jt2sZ9dVkH8o=
+github.com/a-shine/butter v0.0.0-20220316100132-8f69546fb2d7 h1:JAMuBCpio0/J5G1HQLa2+VORUhaWgDOnXOA04ZiL4r8=
+github.com/a-shine/butter v0.0.0-20220316100132-8f69546fb2d7/go.mod h1:xP/flI+MRbofiv6JoUlhZqGRvNiPLi5Jt2sZ9dVkH8o=
 github.com/a-shine/cs347-cw v0.0.0-20220224084634-1e69128387c2 h1:HWn6Qva9RYCaBTEjTmVi7+DRjSpYcOsVI0DzC51DCuw=
 github.com/a-shine/cs347-cw v0.0.0-20220224084634-1e69128387c2/go.mod h1:ylKv8rT6lnwQRzcQjd6eg2jjU39cEjDfhzMLeh763ms=
+github.com/a-shine/cs347-cw v0.0.0-20220317110538-84837f8f2ada h1:XCPAkyjnXlbigud4V+nw8TE4BgExNqwmWXGcUQxQ96Q=
+github.com/a-shine/cs347-cw v0.0.0-20220317110538-84837f8f2ada/go.mod h1:wpvrmbcfo5lKphTrYkMlXOhIoMQswFZSKAxc/FwP0Wk=
 github.com/jordwest/mock-conn v0.0.0-20180617021051-4896c6bd1641 h1:ChkB2s4mFDekyUUmbNE7qNhennP0rfqF2YZUOGxbhFk=
 github.com/jordwest/mock-conn v0.0.0-20180617021051-4896c6bd1641/go.mod h1:AJFEOPtj5Z5z3MAy+0uvjQAH02iRnQr6fnvuHYp/Jek=
 github.com/nu7hatch/gouuid v0.0.0-20131221200532-179d4d0c4d8d h1:VhgPp6v9qf9Agr/56bj7Y/xa04UccTW04VP0Qed4vnQ=
