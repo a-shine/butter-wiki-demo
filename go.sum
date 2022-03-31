@@ -8,6 +8,8 @@ github.com/a-shine/cs347-cw v0.0.0-20220224084634-1e69128387c2 h1:HWn6Qva9RYCaBT
 github.com/a-shine/cs347-cw v0.0.0-20220224084634-1e69128387c2/go.mod h1:ylKv8rT6lnwQRzcQjd6eg2jjU39cEjDfhzMLeh763ms=
 github.com/a-shine/cs347-cw v0.0.0-20220317110538-84837f8f2ada h1:XCPAkyjnXlbigud4V+nw8TE4BgExNqwmWXGcUQxQ96Q=
 github.com/a-shine/cs347-cw v0.0.0-20220317110538-84837f8f2ada/go.mod h1:wpvrmbcfo5lKphTrYkMlXOhIoMQswFZSKAxc/FwP0Wk=
+github.com/a-shine/cs347-cw v0.0.0-20220317153844-7c307fe7d9e5 h1:rhnRynBaFK26IF/n0vx6fdV7UMRHYah4/TNZw0wysIM=
+github.com/a-shine/cs347-cw v0.0.0-20220317153844-7c307fe7d9e5/go.mod h1:wpvrmbcfo5lKphTrYkMlXOhIoMQswFZSKAxc/FwP0Wk=
 github.com/jordwest/mock-conn v0.0.0-20180617021051-4896c6bd1641 h1:ChkB2s4mFDekyUUmbNE7qNhennP0rfqF2YZUOGxbhFk=
 github.com/jordwest/mock-conn v0.0.0-20180617021051-4896c6bd1641/go.mod h1:AJFEOPtj5Z5z3MAy+0uvjQAH02iRnQr6fnvuHYp/Jek=
 github.com/nu7hatch/gouuid v0.0.0-20131221200532-179d4d0c4d8d h1:VhgPp6v9qf9Agr/56bj7Y/xa04UccTW04VP0Qed4vnQ=
