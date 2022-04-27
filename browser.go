@@ -6,9 +6,9 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/a-shine/butter"
-	"github.com/a-shine/butter/node"
-	"github.com/a-shine/cs347-cw/pcg"
+	"github.com/butter-network/butter"
+	"github.com/butter-network/butter/node"
+	"github.com/butter-network/pcg-overlay/pcg"
 )
 
 // WikiUser enables access to the pcg overlay API across different http request methods
@@ -87,7 +87,7 @@ func main() {
 	pcg.AppendGroupStoreBehaviour(overlay.Node())
 
 	// Spawn the node into the network - this is blocking
-	go butter.Spawn(&overlay, false)
+	go butter.Spawn(&overlay, false, false)
 
 	user := WikiUser{&overlay}
 

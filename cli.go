@@ -8,9 +8,9 @@ import (
 	"os"
 	"strings"
 
-	"github.com/a-shine/butter"
-	"github.com/a-shine/butter/node"
-	"github.com/a-shine/cs347-cw/pcg"
+	"github.com/butter-network/butter"
+	"github.com/butter-network/butter/node"
+	"github.com/butter-network/pcg-overlay/pcg"
 )
 
 // store information in the network
@@ -84,5 +84,5 @@ func main() {
 	fmt.Println("Node is listening at", butterNode.Address())
 
 	// Spawn your node into the butter network
-	butter.Spawn(&overlay, false) // Blocking
+	butter.Spawn(&overlay, false, false) // Blocking
 }
