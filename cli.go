@@ -5,13 +5,15 @@ package main
 import (
 	"bufio"
 	"fmt"
+	"os"
+	"strings"
+
 	"github.com/a-shine/butter"
 	"github.com/a-shine/butter/node"
 	"github.com/a-shine/cs347-cw/pcg"
-	"os"
-	"strings"
 )
 
+// store information in the network
 func add(overlay *pcg.Peer) {
 	fmt.Println("Input information:")
 	in := bufio.NewReader(os.Stdin)
@@ -23,6 +25,7 @@ func add(overlay *pcg.Peer) {
 	in.ReadString('\n')
 }
 
+// retrieve information from the network
 func retrieve(overlay *pcg.Peer) {
 	fmt.Println("Information UUID:")
 	in := bufio.NewReader(os.Stdin)
@@ -44,6 +47,7 @@ func printAll(peer *pcg.Peer) {
 	in.ReadString('\n')
 }
 
+// Menu interface
 func interact(overlayInterface node.Overlay) {
 	peer := overlayInterface.(*pcg.Peer)
 	for {
